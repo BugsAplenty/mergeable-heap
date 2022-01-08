@@ -58,3 +58,14 @@ class SinglyLinkedList(ABC):
             while current.next:
                 count += 1
             return count
+
+    def display(self):
+        current = self.head
+        list_str = ""
+        while current.next:
+            if list_str:
+                list_str += str(current.data)
+            else:
+                list_str += f" -> {current.data}"
+            current = current.next
+        return list_str

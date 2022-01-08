@@ -1,52 +1,6 @@
-from SinglyLinkedList import SinglyLinkedList
-from abc import ABC, abstractmethod
-
-
-class MergeableHeap(ABC, SinglyLinkedList):
-    def __init__(self):
-        super().__init__()
-
-    @abstractmethod
-    def minimum(self):
-        pass
-
-    @abstractmethod
-    def insert(self, data):
-        pass
-
-    @abstractmethod
-    def extract_min(self):
-        pass
-
-    @abstractmethod
-    def union(self, other):
-        pass
-
-
-class MergeableHeapSorted(SinglyLinkedListSorted, MergeableHeap):
-
-    def __init__(self):
-        super().__init__()
-
-    def insert(self, data):
-        super().insert(data)
-
-    def minimum(self):
-        return self.head.data
-
-    def extract_min(self):
-        if self.head is not None:
-            min = self.head
-            if self.head.next is not None:
-                self.head = min.next
-            else:
-                self.head = Node(None)
-            return min
-        else:
-            raise KeyError("Heap is empty. There is no minimum.")
-
-    def union(self, other):
-        super().merge(other)
+from SinglyLinkedList import SinglyLinkedListUnsorted
+from MergeableHeap import MergeableHeap
+from Node import Node
 
 
 class MergeableHeapUnsorted(SinglyLinkedListUnsorted, MergeableHeap):
