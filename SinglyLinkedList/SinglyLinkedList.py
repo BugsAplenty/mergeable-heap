@@ -60,12 +60,15 @@ class SinglyLinkedList(ABC):
             return count
 
     def display(self):
-        current = self.head
         list_str = ""
-        while current.next:
-            if list_str:
-                list_str += str(current.data)
-            else:
-                list_str += f" -> {current.data}"
-            current = current.next
-        return list_str
+        if self.head is None:
+            return list_str
+        else:
+            current = self.head
+            while current.next:
+                if list_str:
+                    list_str += str(current.data)
+                else:
+                    list_str += f" -> {current.data}"
+                current = current.next
+            return list_str

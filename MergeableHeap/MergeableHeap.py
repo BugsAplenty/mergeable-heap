@@ -2,7 +2,7 @@ from SinglyLinkedList import SinglyLinkedList
 from abc import ABC, abstractmethod
 
 
-class MergeableHeap(ABC, SinglyLinkedList):
+class MergeableHeap(SinglyLinkedList):
     def __init__(self):
         super().__init__()
 
