@@ -126,6 +126,10 @@ class Interface:
 
             # Tier 4
             elif self.state == States.CHOOSE_ELEM:
+                    try:
+                        self.chosen_insert = int(self.input)
+                    except ValueError:
+                        print("Invalid input. Try again. \n")
                     self.heaps[self.chosen_heap].insert(self.chosen_insert)
                     self.back_to_operations_select()
             elif self.state == States.CHOOSE_OTHER_HEAP:

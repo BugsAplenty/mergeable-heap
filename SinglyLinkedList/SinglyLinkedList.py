@@ -65,10 +65,8 @@ class SinglyLinkedList(ABC):
             return list_str
         else:
             current = self.head
+            list_str += str(current.data)
             while current.next:
-                if list_str:
-                    list_str += str(current.data)
-                else:
-                    list_str += f" -> {current.data}"
+                list_str += f" -> {current.data}"
                 current = current.next
             return list_str
