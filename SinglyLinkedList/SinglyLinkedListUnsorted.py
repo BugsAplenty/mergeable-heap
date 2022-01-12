@@ -6,7 +6,12 @@ class SinglyLinkedListUnsorted(SinglyLinkedList):
     def __init__(self):
         super().__init__()
 
-    def insert(self, data):
+    def insert(self, data: int):
+        """
+        Inserts new node into singly-linked list.
+        :param data:
+        :return:
+        """
         node_new = Node(data)
         if self.head is not None:
             current = self.head
@@ -17,20 +22,24 @@ class SinglyLinkedListUnsorted(SinglyLinkedList):
             self.head = node_new
 
     def merge(self, other):
-        if not (isinstance(other, type(self))):
-            raise TypeError(f"This operation can only be performed with an object of type {type(self).__name__}.")
-        else:
-            current = self.head
-            if current.head is None:
-                return other
-            if other.head is None:
-                return current
-            while current.next:
-                current = current.next
-            current.next = other.head
-            return current
+        """
+        Merges self with other unsorted singly-linked list.
+        :param other: Other singly-linked list
+        :return:
+        """
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = other.head
+        return self
 
-    def swap_index(self, ind1, ind2):
+    def swap_index(self, ind1: int, ind2: int):
+        """
+        Swaps the keys of two nodes in the list by index.
+        :param ind1:
+        :param ind2:
+        :return:
+        """
         if ind1 == ind2:
             return
 
@@ -71,3 +80,15 @@ class SinglyLinkedListUnsorted(SinglyLinkedList):
 
     def delete(self, key):
         super().delete(key)
+
+    @classmethod
+    def from_list(cls, lst: list):
+        """
+        Creates unsorted singly-linked list from a python list.
+        :param lst:
+        :return:
+        """
+        new_linked_list = cls()
+        for item in lst:
+            new_linked_list.insert(item)
+        return new_linked_list

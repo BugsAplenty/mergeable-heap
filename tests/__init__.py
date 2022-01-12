@@ -1,2 +1,4 @@
 from .TestMergeableHeap import TestMergeableHeap
-from .TestMergeableHeapSorted import
+from .TestMergeableHeapSorted import TestMergeableHeapSorted
+from .TestMergeableHeapUnsorted import TestMergeableHeapUnsorted
+from helper_functions import generate_random_list

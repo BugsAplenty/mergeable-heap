@@ -11,16 +11,24 @@ class MergeableHeapSorted(SinglyLinkedListSorted, MergeableHeap):
         super().insert(data)
 
     def minimum(self):
+        """
+        Returns the minimum key in a sorted min-heap.
+        :return:
+        """
         return self.head.data
 
     def extract_min(self):
+        """
+        Returns minimum from sorted min-heap and removes it from the heap.
+        :return:
+        """
         if self.head is not None:
-            min = self.head
+            node_min = self.head
             if self.head.next is not None:
-                self.head = min.next
+                self.head = node_min.next
             else:
                 self.head = Node(None)
-            return min
+            return node_min.data
         else:
             raise KeyError("Heap is empty. There is no minimum.")
 
