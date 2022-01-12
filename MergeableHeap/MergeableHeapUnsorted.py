@@ -80,7 +80,16 @@ class MergeableHeapUnsorted(SinglyLinkedListUnsorted, MergeableHeap):
     def union(self, other):
         if not (isinstance(other, type(self))):
             raise TypeError(f"This operation can only be performed with an object of type {type(self).__name__}.")
-        super().merge(other)
-        for i in range(int(self.length()/2)-1, -1, -1):
-            self.min_heapify(i)
+        merge_head = temp = Node(0)
+        temp_this = self.head
+        temp_other = other.head
+        while temp_this or temp_other:
+            if temp_this and (not temp_other or temp_this.data <= temp_other.data):
+                temp.next = Node(temp_this.data)
+                temp_this = temp_this.next
+            else:
+                temp.next = Node(temp_other.data)
+                temp_other = temp_other.next
+            temp = temp.next
+        self.head = merge_head.next
         return self
